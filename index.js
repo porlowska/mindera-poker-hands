@@ -1,5 +1,3 @@
-
-// x is NUM_TRIALS
 function pokerHands(x){
     //create a deck of cards
     const suits = ["h", "d", "c", "s"]; // Hearts, Dimonds, CLubs, Spades
@@ -12,15 +10,13 @@ function pokerHands(x){
         }
 
     let straightFlush = 0 //5 same suit, seqential rank
-    let flush = 0 //5 same suit different numer
-
+    let flush = 0 //5 same suit, different numer
     let fourOfAKind = 0 // 4 same number, different suit 
-    let fullHouse = 0 //3 same number  and 2 same number diferent suit 
-    let threeOfAKind = 0 //3 same cards numbers different suit 
-
-    let straight = 0 // seqential rank different suit 
+    let fullHouse = 0 //3 same number  and 2 same number, diferent suit 
+    let threeOfAKind = 0 //3 same cards numbers, different suit 
+    let straight = 0 // seqential rank, different suit 
     
-        console.log('Number of Traials: ' + x)
+    console.log('Number of Traials: ' + x)
     // itterate through hands
     for (let i = x; i > 0; i--) {
         //shuffle the deck
@@ -34,13 +30,11 @@ function pokerHands(x){
         const hand = deck.slice(0,5)
         //sort scards in ascending order 
         hand.sort((a, b) => a[0] - b[0]);
-        //console.log(hand)
         
         // check hand
             // ALL same suit, 
             // checks if each card is equal to the first one 
             if (hand.every(card => card[1] === hand[0][1])){
-                //console.log(hand)
                 for (let i = 0; i < hand.length - 1; i++) {
                     if (hand[i][0] === hand[i + 1][0] - 1) {
                         straightFlush++;
@@ -115,7 +109,6 @@ function pokerHands(x){
     const pStraight = (straight/x)*100
     const pWin = ((straight+flush+straightFlush+fourOfAKind+threeOfAKind+fullHouse)/x)*100
 
-
     console.log( 
         `Probablility of a hand with: \n 
         Straight Flush: ${pStraightFlush} % \n
@@ -124,20 +117,10 @@ function pokerHands(x){
         Full House: ${pFullHouse} %\n
         Three of a Kind: ${pThreeOfAKind} %\n
         Straight: ${pStraight} %\n \n 
-        Probablilty of winning with any of the above: ${pWin} %
-        
-        `
+        Probablilty of winning with any of the above: ${pWin} %`
     )
-
-    
 }
 
-const NUM_TRIALS = prompt("Enter numnber fo trails, min 1")
+const NUM_TRIALS = prompt("Enter numnber fo trails, min 1, recommeended above 100")
 
 pokerHands(parseInt(NUM_TRIALS))
-
-
-
-
-
-//https://en.wikipedia.org/wiki/List_of_poker_hands 
