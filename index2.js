@@ -1,5 +1,5 @@
 //function which will start the couning
-const pokerHands = (x) =>{
+const pokerHands = (x) => {
   let deck = createDeck();
 
   let straightFlush = 0; //5 same suit, seqential rank
@@ -44,7 +44,7 @@ const pokerHands = (x) =>{
     straight,
     x
   );
-}
+};
 
 // function to create the deck
 const createDeck = () => {
@@ -58,7 +58,7 @@ const createDeck = () => {
     }
   }
   return deck;
-}
+};
 
 // function to shuffle the deck, draw 5 cards and sort them out
 const drawCards = (deckArr) => {
@@ -75,16 +75,12 @@ const drawCards = (deckArr) => {
   hand.sort((a, b) => a[0] - b[0]);
 
   return hand;
-}
+};
 
 // function to check if same suit
-const isSameSuit = (handArr) =>{
-  if (handArr.every((card) => card[1] === handArr[0][1])) {
-    return true;
-  } else {
-    return false;
-  }
-}
+const isSameSuit = (handArr) => {
+  return handArr.every((card) => card[1] === handArr[0][1]) ? true : false;
+};
 
 // function to check if in sequence
 function isInSequence(handArr) {
@@ -98,22 +94,12 @@ function isInSequence(handArr) {
 
 // function check how many same numers 2 same 3 sam 4 same
 function isSameNumber(handArr) {
-  //extract card numbers(no) only
-
   let no = handArr.map((card) => card[0]);
-  //console.log(no);
-
   const winningHand = new Set(no);
-  //console.log(winningHand.size);
-
+  // set will group my numbers
   // if a set has 2 uniqe entries
   //4same no (xxxx y) (y xxxx) 2222 4
   //3 same no 2 same no (xxx yy)(yy xxx)
-
-  // XXXX Y
-  // XXX YY
-  // XX YYY
-  // X YYYY
 
   if (winningHand.size == 2 && no[1] === no[3]) {
     console.log("four");
@@ -123,14 +109,9 @@ function isSameNumber(handArr) {
     return "full";
     // if set has 3 uniqe entries
     //3 same no (xxx yz)(y xxx z)(yz xxx)
-  } else if (
-    winningHand.size == 3 &&
-    (no[0] === no[2] || no[2] === no[4] || no[1] === no[3])
-  ) {
+  } else if (winningHand.size == 3 && (no[0] === no[2] || no[2] === no[4] || no[1] === no[3])) {
     console.log("three");
     return "three";
-  } else {
-    console.log("nope");
   }
 }
 
@@ -158,6 +139,6 @@ function calculateProbability(a, b, c, d, e, f, x) {
 }
 
 const NUM_TRIALS = prompt(
-  "Enter numnber fo trails, min 1, recommeended above 100"
+  "Enter numnber of trails"
 );
 pokerHands(parseInt(NUM_TRIALS));
