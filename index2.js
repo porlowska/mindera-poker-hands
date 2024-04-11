@@ -82,8 +82,15 @@ const isSameSuit = (handArr) => {
   return handArr.every((card) => card[1] === handArr[0][1]) ? true : false;
 };
 
+// check agains 14!!! <--- 
+// 1. check if it is a special case arrangement return true 
 // function to check if in sequence
 function isInSequence(handArr) {
+  if (handArr[4][0]=== 14 && handArr[1][0]===2){
+    handArr.pop();
+    handArr.unshift([1,a])
+  }
+
   for (let i = 0; i < handArr.length - 1; i++) {
     if (handArr[i + 1][0] - handArr[i][0] !== 1) {
       return false; // Sequence broken
